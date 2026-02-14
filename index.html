@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Για Σένα 💝</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    text-align:center;
+}
+
+/* Hearts Falling */
+.heart{
+    position:fixed;
+    top:-10px;
+    color:#ff4d88;
+    font-size:22px;
+    animation: fall 5s linear infinite;
+    opacity:0.9;
+    z-index:9990;
+}
+@keyframes fall{
+    0%{transform:translateY(-10vh) translateX(0); opacity:1;}
+    100%{transform:translateY(110vh) translateX(20px); opacity:0;}
+}
+
+/* Pages */
+.page{
+    display:none;
+    min-height:100vh;
+    padding-top:60px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow-y:auto;
+}
+.show{ display:block; }
+
+/* Buttons */
+button{
+    background:#ffb6c9;
+    border:none;
+    border-radius:25px;
+    padding:10px 22px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+}
+
+h2{ color:#b4002a; }
+
+/* Back Arrow */
+.backArrow{
+    position:fixed;
+    top:15px;
+    left:15px;
+    font-size:26px;
+    background:white;
+    border-radius:50%;
+    width:42px;
+    height:42px;
+    line-height:42px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.2);
+    z-index:9999;
+}
+
+/* Love Letter */
+.love-box{
+    max-width:650px;
+    padding:30px 35px;
+    background:rgba(255,255,255,0.9);
+    border-radius:25px;
+    margin:40px auto;
+    box-shadow:0 0 35px rgba(255,130,170,0.35);
+    white-space:pre-wrap;
+    text-align:left;
+    font-size:18px;
+    line-height:1.55;
+    color:#442222;
+    max-height:78vh;
+    overflow-y:auto;
+}
+
+/* Gallery */
+.gallery-container{
+    width:100%;
+    padding:40px 0 120px 0;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:18px;
+    padding:20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.gallery-grid img{
+    width:100%;
+    border-radius:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.18);
+    transition:transform .3s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.04);
+}
+
+.gallery-text{
+    font-size:22px;
+    margin-top:20px;
+    margin-bottom:40px;
+    color:#c3134f;
+    font-weight:bold;
+}
+
+/* Coupons layout */
+.coupon-grid{
+    max-width:900px;
+    margin:30px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:25px;
+    padding:20px;
+}
+
+.coupon{
+    background:#ffbad4;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+}
+
+/* Ticket effect */
+.coupon:before,
+.coupon:after{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:22px;
+    background:#ffe8f2;
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+    box-shadow:0 0 8px rgba(255,255,255,0.6);
+}
+
+.coupon:before{ left:-11px; }
+.coupon:after{ right:-11px; }
+
+.coupon-title{
+    font-size:20px;
+    font-weight:bold;
+    color:#b40041;
+    margin-bottom:8px;
+}
+
+.coupon-text{
+    font-size:16px;
+    color:#5a2a37;
+}
+</style>
+</head>
+
+<body>
+
+<div class="backArrow" onclick="show('p1')">←</div>
+
+<!-- Hearts -->
+<script>
+function spawnHearts(){
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random()*10) + "px";
+        heart.style.animationDuration = (4 + Math.random()*3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }, 350);
+}
+spawnHearts();
+</script>
+
+<!-- PAGE 1 -->
+<div class="page show" id="p1" style="background-image:url('img/first.png');">
+    <div class="box" style="background:white; padding:20px; border-radius:20px; display:inline-block;">
+        <h2>Δε νομιζωω να πιστευεες οτι θα ξεχασωω αυτη τη ξεχωριστηη μερα !<br>
+        Εχω φτιαξειι κατιι για εσενα θελειις να το δειις;;;</h2>
+        <button onclick="show('p2')">Ναι 💞</button>
+        <button onclick="show('p_no1')">Οχι 🙄</button>
+    </div>
+</div>
+
+<!-- NO1 -->
+<div class="page" id="p_no1" style="background-image:url('img/no1.png');">
+    <div class="box" style="background:white; padding:20px; border-radius:20px;">
+        <h2>ΠΩΣ ΤΟΛΜΗΣΕΣ 😤</h2>
+        <button onclick="show('p1')">Ξαναπροσπάθησε 😌</button>
+    </div>
+</div>
+
+<!-- YES1 -->
+<div class="page" id="p2" style="background-image:url('img/yes1.png');">
+    <div class="box" style="background:white; padding:20px; border-radius:20px;">
+        <h2>ΧΙΧΙΧΙΧ 😏💗</h2>
+        <button onclick="show('p3')">Next ➜</button>
+    </div>
+</div>
+
+<!-- QUESTION -->
+<div class="page" id="p3" style="background-image:url('img/question.png');">
+    <div class="box" style="background:white; padding:20px; border-radius:20px;">
+        <h2>Θα γινεις η βαλεντινα μου;;; 💘</h2>
+        <button onclick="show('p4')">ΕΝΝΟΕΙΤΑΙ 😍</button>
+        <button onclick="show('p_no2')">Α κλ 🙃</button>
+    </div>
+</div>
+
+<!-- NO2 -->
+<div class="page" id="p_no2" style="background-image:url('img/no2.png');">
+    <div class="box" style="background:white; padding:20px; border-radius:20px;">
+        <h2>ΜΟΛΙΣ ΜΟΥ ΕΙΠΕΣ ΟΧΙ; 😱</h2>
+        <button onclick="show('p3')">Ξαναπροσπάθησε 💗</button>
+    </div>
+</div>
+
+<!-- GIFTS PAGE -->
+<div class="page" id="p4" style="background:#ffd6e8;">
+    <h2 style="margin-top:40px;">ΤΟ ΗΞΕΡΑΑΑ 💝🎁</h2>
+
+    <div style="display:flex; justify-content:center; gap:30px; margin-top:40px;">
+
+        <!-- Left Gift (Letter) -->
+        <img src="img/gift.png" style="width:160px; cursor:pointer;"
+             onclick="show('gift1_msg')">
+
+        <!-- Middle Gift (Gallery) -->
+        <img src="img/gift.png" style="width:160px; cursor:pointer;"
+             onclick="show('p5')">
+
+        <!-- Right Gift (Coupons) -->
+        <img src="img/gift.png" style="width:160px; cursor:pointer;"
+             onclick="show('p_coupons')">
+
+    </div>
+</div>
+
+<!-- LOVE LETTER -->
+<div class="page" id="gift1_msg" style="background:linear-gradient(#ffe6f2,#ffd9e6);">
+    <div class="love-box">
+
+Αρχικαα δεν μπορω να πιστεψω οτι ηρθε παλι αυτη η μερα που νιωθω ακομα περισσοτερο ερωτευμενος απο τη προηγουμενη φορα χαχ αληθεια ειναι πολυ σπανιο αυτο μαζι σου.. δε ξερω πως καταφερνεις να αγγιζεις μεχρι και τα πιο ευαισθητα και σκοτεινα μου σημεια που δεν ειχα αφησει κανενα μεχρι τωρα να φτασει εκει.. εχεις κατι το πολυ μοναδικο γοητευτικο και ελκυστικο πανω σου ❤️‍🩹στο εχω ξαναπει αλλα μαρεσει να στο λεω ξανα ερωτευτηκα και ειμαι τρελα ερωτευμενος με το ποια εισαι οχι με το ποια δειχνεις ολα τα υπολοιπα πανω σου ειναι εξτρα δωρακια χιχιχ το χαμογελο σου τα ματια σου τα πιασ-ΓΚΧΜ ΓΚΧΜ..<br><br>
+
+αγγελικες παρεμβασεις χαχ λατρευω το ποια εισαι περισσοτερο απο οσο φανταζεσαι και νιωθω περηφανος που σε εχω και δε φοβαμαι να το δειξω ❤️ αυτη τη καρδουλα με τις γαζες την θυμασαι σιγουρα γιαυτο την εβαλα,την εβαλα για να σου θυμισω μαζι με ποια τις εβγαλε σιγα σιγα 😁Το ξερω οτι ολοι λενε τη λεξη 'σαγαπαω' σημερα.. θα σου πω κατι και να το κρατησεις σαν επτασφραγιστο μυστικο <3<br><br>
+
+θελω 1)να σε αγαπας μεσα σε ολες τις επιλογες που κανεις και να μη ξεχνας να κανεις χαρουμενο και τον εαυτο σου 2)να σε προσεχεις να μην αφηνεις τους αλλους να κανουν οτι θελουν στη ζωη σου 3)να σε εκτιμας κανενας δεν σε ξερει καλυτερα απο εσενα και ποσα εχεις περασει για να γινεις σημερα αυτο που εισαι <3 Θελω να βαζεις τον εαυτο σου μπροστα γιατι ολοι οι ανθρωποι στατιστικα καταλαβαινουν μονο οσα βλεπουν και μονο εσυ ξερεις τι χρειαζεσαι πραγματικα ❤️<br><br>
+
+τελειωσεε η "διαλεξη" χαχαχα ηθελα να σου τα πω γιατι εισαι ο πολυτιμοτερος μου θησαυρος και θελω παντα να μου εισαι καλα 😁 ξερειις απο τη πρωτη φορα που σου μιλησα προσποιουμουν οτι δεν ηξερα ενω βαθια μεσα μου ηξερα που θα καταληξει,μπορει να ακουστει περιεργο αυτο αλλα εισαι κατι σαν ευλογια ηρθες και σταματησα να ποναω,να αγχωνομαι να πνιγομαι μεσα στις σκεψεις μου,ηρθες και ολα αυτα που παρακαλουσα να εχω απο λιγο,ξαφνικα ειχα οσο θα ηθελα ❤️ εκανες τα παντα να φαινονται τοσο απλα .. σε ευχαριστω που ηρθες στη ζωη μουυ 😁😁😁θα στο λεω μεχρι να πεθανω Σ Α Γ Α Π Α Ω 🥹
+
+        <div style="text-align:center; margin-top:20px;">
+            <button onclick="show('p4')">Πίσω στα Δώρα 💝</button>
+        </div>
+    </div>
+</div>
+
+<!-- COUPONS PAGE -->
+<div class="page" id="p_coupons" style="background:linear-gradient(#ffe8f2,#ffd6e8);">
+
+    <h2 style="margin-top:20px; color:#c3134f; font-size:28px;">
+        Τα κουπόνια σου μωράκι μου 💞
+    </h2>
+
+    <div class="coupon-grid">
+
+        <div class="coupon">
+            <div class="coupon-title">Δωρεάν Αγκαλίτσες 🤗</div>
+            <div class="coupon-text">Απεριόριστες — Δεν λήγει ποτέ ✨</div>
+        </div>
+
+        <div class="coupon">
+            <div class="coupon-title">Δωρεάν Φιλάκια 😘</div>
+            <div class="coupon-text">Απεριόριστα — Δεν λήγει ποτέ 💗</div>
+        </div>
+
+        <div class="coupon">
+            <div class="coupon-title">Σου αφήνω όλα τα kills 🎮</div>
+            <div class="coupon-text">Για 1 game — ⚠️ Όχι επαναχρησιμοποιούμενο</div>
+        </div>
+
+        <div class="coupon">
+            <div class="coupon-title">Τρώμε ό,τι θέλεις εσύ 🍔🍣</div>
+            <div class="coupon-text">Όποτε το ζητήσεις μωρό μου 😋</div>
+        </div>
+
+    </div>
+
+    <button onclick="show('p4')" style="margin-top:30px; margin-bottom:60px;">
+        Πίσω στα Δώρα 🎁
+    </button>
+
+</div>
+
+<!-- GALLERY -->
+<div class="page" id="p5" style="background:linear-gradient(#ffd6e8,#ffe6f4);">
+
+    <h2 style="margin-top:20px;">Μικρές στιγμές… μεγάλα χαμόγελα 💞</h2>
+
+    <div class="gallery-container">
+        <div class="gallery-grid">
+
+            <!-- ΟΛΕΣ ΟΙ ΕΙΚΟΝΕΣ ΣΟΥ -->
+            <img src="img/1b643cc2-ea46-436a-bc45-79a83f15e621.png">
+            <img src="img/1b6557dd-d901-46e5-a3d3-7787b2c52eac.png">
+            <img src="img/1cd1e9cc-f8f3-4e50-b6a1-921cd492c20a.png">
+            <img src="img/1ff70adb-c573-46a1-bfbe-9a45b34a5904.png">
+            <img src="img/2c659e9c-35f9-48ab-a576-ed415a9f1677.png">
+            <img src="img/3da60302-9533-4fd7-8331-a5341c2eac4f.png">
+            <img src="img/3e833473-031e-4e51-91b9-ce6c71c81220.png">
+            <img src="img/5e0ab17c-e97e-417b-acd8-31573a4ae23d.png">
+            <img src="img/5f34df3d-f05a-4818-b129-23329fcf4be6.png">
+            <img src="img/6ec55686-c53b-41a0-af96-fe1a4e74a754.png">
+            <img src="img/7a3a0326-728a-4795-a490-13e2e5e52a93.png">
+            <img src="img/9c5e0cd4-51ab-4dd4-9098-41ccdc84424f.png">
+            <img src="img/18a8b67f-336b-4bb1-9345-ae64b8276a22.png">
+            <img src="img/24c76de1-495f-48ee-808b-ef8bad788118.png">
+            <img src="img/43ed17ae-c6d3-48f6-8af9-47fccc1115c7.png">
+            <img src="img/063df4cd-67d3-4025-849d-93e6c805bb9f.png">
+            <img src="img/410d845a-9513-4431-9055-2495d5153943.png">
+            <img src="img/568d7b3a-7122-442b-b96a-eda7c9dcb897.png">
+            <img src="img/730c6db7-8f27-4635-bf24-b954a398e00b.png">
+            <img src="img/991c9c29-ecfc-426f-9c1d-304629a60b0e.png">
+            <img src="img/1347bed3-eb6a-4e6d-a2c7-2cd823e4b4b1.png">
+            <img src="img/1454e71a-d88d-421b-a394-6403704472b4.png">
+            <img src="img/7761de5f-1a5c-43f0-825e-2a0f73759217.png">
+            <img src="img/978743a7-7cee-41a8-a6b3-43cfded6d45c.png">
+            <img src="img/34937284-1a42-4efe-a13e-e90530bc9118.png">
+            <img src="img/a43c87b8-5db7-422f-8ba2-66759c07238d.png">
+            <img src="img/a103fc75-8765-4470-9fac-403b3dc268db.png">
+            <img src="img/a419274d-3a58-4fe9-b9aa-6f79d2f1de52.png">
+            <img src="img/aa7383e5-b427-4fb8-8d8d-774f9ea376e6.png">
+            <img src="img/cece9187-ffe0-4287-b2af-cc48dab356f4.png">
+            <img src="img/d0f1c820-bf55-4895-b22b-4bd23ea175b4.png">
+            <img src="img/d7b5fc75-cc71-4cdd-a0b0-524e2b0e02c6.png">
+            <img src="img/d09e90fd-13d5-4f19-906a-fc54483fd014.png">
+            <img src="img/d35b307f-8c31-4207-9e97-13489e6dcdb9.png">
+            <img src="img/d046a765-b47f-4b3a-a23c-e0aea2692b1d.png">
+            <img src="img/dbf4e0e3-7fd5-45d1-9467-ebc0b2abac6e.png">
+            <img src="img/df1f31be-d221-410a-8c48-d083c00e75da.png">
+            <img src="img/e0b278c1-85f5-4c98-9074-590fe612a350.png">
+            <img src="img/e927a45d-145f-416c-b9aa-65feb5fe106c.png">
+            <img src="img/f4df92a2-970b-4c86-889c-3e37a815781e.png">
+            <img src="img/f6e862b5-c40a-4845-80d0-b562e018d797.png">
+            <img src="img/f82de51c-a305-4cb7-a237-954a292b8666.png">
+            <img src="img/f7068f0e-f977-4112-ba40-1c221d7eb22a.png">
+            <img src="img/fb5e1717-93e1-4d6c-86c3-580ef4cfc662.png">
+            <img src="img/fdfc6088-6eab-4eed-97dd-c6e859ade558.png">
+
+        </div>
+
+        <div class="gallery-text">
+            απόδειξη ότι η αγάπη μπορεί να μοιάζει και έτσι πολλές φορές 💗
+        </div>
+
+        <button onclick="show('p4')" style="margin-bottom:40px;">Πίσω στα Δώρα 🎁</button>
+
+    </div>
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+    document.getElementById(id).classList.add('show');
+}
+</script>
+
+</body>
+</html>
